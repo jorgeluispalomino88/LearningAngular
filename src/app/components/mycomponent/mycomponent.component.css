@@ -1,0 +1,18 @@
+
+h1 {
+  font-size: large;
+  color: darkgrey;
+}
+
+p {
+  font-size: large;
+  color: darkgrey;
+}
+
+.mycomponent {
+  background-color: black;
+  border-radius: 2%;
+  width: max-content;
+  padding: 5px;
+  margin: 5px;
+}
