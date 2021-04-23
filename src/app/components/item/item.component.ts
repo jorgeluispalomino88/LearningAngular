@@ -15,6 +15,9 @@ export class ItemComponent implements OnInit {
   //Parametro de salida. Para enviar eventos hacia el componente padre
   @Output() deleteItem: EventEmitter<Item> = new EventEmitter();
 
+  //Para enviar el evento al padre de que se cambio el estado del checkbox
+  @Output() toggleItem: EventEmitter<Item> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class ItemComponent implements OnInit {
 
   onToggle(item: Item){
     item.completed = !item.completed;
+    this.toggleItem.emit(item);
   }
 
 }
