@@ -10,6 +10,8 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/item/item.component';
 import { TotalComponent } from './components/total/total.component';
 import { AdditemComponent } from './components/additem/additem.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AdditemComponent } from './components/additem/additem.component';
     ItemsComponent,
     ItemComponent,
     TotalComponent,
-    AdditemComponent
+    AdditemComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,16 @@ import { AdditemComponent } from './components/additem/additem.component';
         path: 'add',
        component: AdditemComponent
       },
-    ])
+      {
+        path: '',
+        redirectTo: '', pathMatch: 'full'
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent
+      }
+    ]),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

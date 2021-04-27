@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../model/item';
+import { ItemService } from '../../services/item.service';
 
 @Component({
   selector: 'app-items',
@@ -12,34 +13,13 @@ export class ItemsComponent implements OnInit {
   message: string = "Total por pagar";
   totalPayment: number = 0;
 
-  constructor() {
+  constructor(private itemService: ItemService) { //Inyectando en el constructor el servicio ItemService
 
   }
 
   ngOnInit(): void {
-    this.items =  [
-      {
-          id: 0,
-          title: 'manzana',
-          price: 10.5,
-          quantity: 4,
-          completed: true
-      },
-      {
-        id: 1,
-        title: 'platano',
-        price: 5.0,
-        quantity: 10,
-        completed: false
-    },
-    {
-      id: 2,
-      title: 'pan',
-      price: 1.0,
-      quantity: 4,
-      completed: false
-  }
-    ];
+    this.items = this.itemService.getItems();
+
 
     this.getTotalPayment();
   }
